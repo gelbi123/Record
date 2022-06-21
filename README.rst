@@ -1,6 +1,9 @@
 Overview
 ========
 
+This fork is used for my Zope4 buildout
+with customized code.
+
 Record provides special objects used in some Zope2 internals like ZRDB.
 
 Records are used to provide compact storage for catalog query results.
