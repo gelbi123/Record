@@ -56,7 +56,9 @@ class Record(Base):
         if isinstance(key, int):
             pos = key
         else:
-            pos = self.__schema__[key]
+            for k, v in self.__record_schema__.items():
+                if k.lower() == key.lower():
+                    pos = v
         return self.__data__[pos]
 
     def __getattr__(self, key):

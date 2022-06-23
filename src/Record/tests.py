@@ -266,3 +266,21 @@ class RecordTest(unittest.TestCase):
 
         r = R((4, ))
         self.assertTrue(isinstance(r, Base))
+
+    def test_case_insensitive(self):
+        class R(Record):
+            __record_schema__ = {'A': 0, 'B': 1}
+        r = R((0, 1))
+
+        self.assertEqual(r['a'], 0)
+        self.assertEqual(r['b'], 1)
+        self.assertEqual(r['A'], 0)
+        self.assertEqual(r['B'], 1)
+
+        self.assertEqual(r.a, 0)
+        self.assertEqual(r.b, 1)
+        self.assertEqual(r.A, 0)
+        self.assertEqual(r.B, 1)
+
+if __name__ == '__main__':
+    unittest.main()
