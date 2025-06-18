@@ -56,7 +56,11 @@ class Record(Base):
         if isinstance(key, int):
             pos = key
         else:
-            pos = self.__schema__[key]
+            # case insetivity
+            try:
+                pos = self.__schema__[key]
+            except KeyError:
+                pos = self.__schema__[key.upper()]
         return self.__data__[pos]
 
     def __getattr__(self, key):
