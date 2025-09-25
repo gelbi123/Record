@@ -57,9 +57,8 @@ class Record(Base):
             pos = key
         else:
             # case insetivity
-            try:
-                pos = self.__schema__[key]
-            except KeyError:
+            pos = self.__schema__.get(key, object)
+            if pos == object:
                 pos = self.__schema__[key.upper()]
         return self.__data__[pos]
 
